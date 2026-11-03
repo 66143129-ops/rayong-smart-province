@@ -215,7 +215,7 @@ img{display:block;max-width:100%}
 .delta{font:600 .78rem var(--f-display);padding:3px 8px;border-radius:8px;min-width:64px;text-align:center}
 .up{background:var(--good-50);color:var(--good)}
 
-
+.dash-row2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px;margin-top:20px}
 .chart{padding:22px 24px}
 .bars{display:flex;flex-direction:column;gap:16px;margin-top:18px}
 .bar-row{display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr) 112px 56px;gap:14px;align-items:center}
@@ -245,7 +245,7 @@ img{display:block;max-width:100%}
 .ticker-track span::before{content:"◆";color:var(--turq);margin-right:12px;font-size:.6rem;vertical-align:middle}
 .ticker:hover .ticker-track{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
-@media (max-width:1020px){.dash{grid-template-columns:1fr}}
+@media (max-width:1020px){.dash,.dash-row2{grid-template-columns:1fr}}
 @media (max-width:420px){.env{grid-template-columns:1fr 1fr;gap:10px}.env .card{padding:14px}.env .val{font-size:1.4rem}.kgrid b{font-size:1.2rem}}
 
 /* ---------- Services ---------- */
@@ -582,33 +582,6 @@ img{display:block;max-width:100%}
 .qform button{height:46px;padding:0 18px;border-radius:12px;background:var(--sun);color:var(--teal);font:600 .95rem var(--f-display);display:inline-flex;align-items:center;gap:8px}
 @media (max-width:900px){.hs-arrow{display:none}.place-tag{right:auto;left:max(16px,env(safe-area-inset-left,0px));top:16px;bottom:auto;font-size:.8rem;padding:6px 12px}.qform{flex:1 1 100%}}
 @media (max-width:560px){.ann-bar .lbl span{display:none}.hero.hs{min-height:640px}.hero>.wrap{padding-block:72px 210px}.qcard{padding:16px;gap:12px}.qcard b{width:100%}.qchips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.qchips a{flex:none}}
-
-/* ---------- Carousel (vanilla, no dependency) ---------- */
-.cs{position:relative;--gap:20px;--pv:3}
-.cs-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.cs-head h3{font-size:1.1rem;font-weight:600;color:var(--teal)}
-.cs-track{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - (var(--pv) - 1) * var(--gap)) / var(--pv));gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:4px;scrollbar-width:none;overscroll-behavior-x:contain;padding:6px 4px 22px;margin:-6px -4px -22px;cursor:grab;touch-action:pan-x pan-y}
-.cs-track::-webkit-scrollbar{display:none}
-.cs-track.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
-.cs-track.dragging *{pointer-events:none}
-.cs-track>*{scroll-snap-align:start;min-width:0}
-.cs-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}
-.cs-dots button{width:10px;height:10px;padding:0;border:0;border-radius:999px;background:#c9d8e0;transition:width .3s var(--ease),background .3s}
-.cs-dots button[aria-current="true"]{width:28px;background:var(--ocean)}
-.cs-dots:empty,.cs.single .cs-dots,.cs.single .cs-ctrl{display:none}
-.cs-ctrl{display:flex;gap:8px}
-.cs-eco{--pv:2;margin-top:20px}
-.cs-eco .cs-head{margin-bottom:14px}
-.cs-proj{--pv:3}
-.cs-proj .cs-head{margin-bottom:16px}
-.cs-exp{--pv:3}
-.cs-exp .place{aspect-ratio:4/3}
-@media (max-width:1020px){.cs-eco{--pv:1}.cs-proj,.cs-exp{--pv:2}}
-@media (max-width:640px){.cs-proj,.cs-exp{--pv:1}.cs{--gap:14px}}
-.dash-side .env{flex:1;grid-auto-rows:1fr}
-.dash-side .env .card{justify-content:center;gap:10px;padding:20px 22px}
-.dash-side .env .val{font-size:2.1rem}
-@media (max-width:1020px){.dash-side .env .val{font-size:1.75rem}}
 </style>
 </head>
 <body>
@@ -865,15 +838,17 @@ img{display:block;max-width:100%}
             <div class="val num">1,840<small>MW</small></div>
           </div>
         </div>
+        <article class="card trend">
+          <h3>ตัวชี้วัดรายเดือน <small>เทียบเดือนก่อน</small></h3>
+          <div class="trow"><span>นักท่องเที่ยวรายเดือน</span><b class="num">920<small>พันคน</small></b><span class="delta up num">▲ 8.1%</span></div>
+          <div class="trow"><span>การชาร์จ EV รายเดือน</span><b class="num">148<small>พันครั้ง</small></b><span class="delta up num">▲ 14.6%</span></div>
+          <div class="trow"><span>PM2.5 เฉลี่ย</span><b class="num">12.4<small>µg/m³</small></b><span class="delta up num">▼ 18.4%</span></div>
+          <div class="trow"><span>มูลค่าการลงทุนใหม่</span><b class="num">68.4<small>พันล้านบาท</small></b><span class="delta up num">▲ 11.2%</span></div>
+        </article>
       </div>
     </div>
 
-    <div class="cs cs-eco" id="csEco" data-interval="6000" role="region" aria-roledescription="carousel" aria-label="ข้อมูลเศรษฐกิจและการลงทุน">
-      <div class="cs-head">
-        <h3>ข้อมูลเศรษฐกิจและการลงทุน</h3>
-        <div class="cs-ctrl"><button class="rbtn cs-prev" type="button" aria-label="ชุดข้อมูลก่อนหน้า"><svg class="ico"><use href="#i-arrow-l"/></svg></button><button class="rbtn cs-next" type="button" aria-label="ชุดข้อมูลถัดไป"><svg class="ico"><use href="#i-arrow"/></svg></button></div>
-      </div>
-      <div class="cs-track" tabindex="0">
+    <div class="dash-row2">
       <article class="card chart">
         <h3>สาขาการลงทุนสำคัญ <small>มูลค่ารวมในเขต EEC ระยอง</small></h3>
         <div class="bars" id="bars"></div>
@@ -888,15 +863,6 @@ img{display:block;max-width:100%}
           <div><span>FDI ไหลเข้า</span><b class="num">9.4<small>หมื่นล้านบาท</small></b><em>+22% จากปีก่อน</em></div>
         </div>
       </article>
-      <article class="card trend">
-          <h3>ตัวชี้วัดรายเดือน <small>เทียบเดือนก่อน</small></h3>
-          <div class="trow"><span>นักท่องเที่ยวรายเดือน</span><b class="num">920<small>พันคน</small></b><span class="delta up num">▲ 8.1%</span></div>
-          <div class="trow"><span>การชาร์จ EV รายเดือน</span><b class="num">148<small>พันครั้ง</small></b><span class="delta up num">▲ 14.6%</span></div>
-          <div class="trow"><span>PM2.5 เฉลี่ย</span><b class="num">12.4<small>µg/m³</small></b><span class="delta up num">▼ 18.4%</span></div>
-          <div class="trow"><span>มูลค่าการลงทุนใหม่</span><b class="num">68.4<small>พันล้านบาท</small></b><span class="delta up num">▲ 11.2%</span></div>
-        </article>
-      </div>
-      <div class="cs-dots" role="group" aria-label="เลือกชุดข้อมูล"></div>
     </div>
 
     <div class="ticker" role="region" aria-label="อัปเดตจากศูนย์บัญชาการ">
@@ -930,13 +896,13 @@ img{display:block;max-width:100%}
         <h2 id="exp-title" data-i18n="expTitle">ท่องเที่ยวและของดีเมืองระยอง</h2>
         <p data-i18n="expDesc">ทะเล เกาะ ป่าชายเลน และย่านเมืองเก่า ครบทั้ง 8 อำเภอ สำหรับนักเดินทางทุกสไตล์</p>
       </div>
-      <div class="cs-ctrl" id="expCtrl"><button class="rbtn cs-prev" type="button" aria-label="สถานที่ก่อนหน้า"><svg class="ico"><use href="#i-arrow-l"/></svg></button><button class="rbtn cs-next" type="button" aria-label="สถานที่ถัดไป"><svg class="ico"><use href="#i-arrow"/></svg></button></div>
-    </div>
-    <div class="cs cs-exp" id="csExp" data-interval="5000" data-ctrl="#expCtrl" role="region" aria-roledescription="carousel" aria-label="สถานที่ท่องเที่ยว">
-      <div class="cs-track" id="rail" tabindex="0"></div>
-      <div class="cs-dots" role="group" aria-label="เลือกสถานที่"></div>
+      <div class="rail-ctrl">
+        <button class="rbtn" type="button" id="railPrev" aria-label="เลื่อนไปทางซ้าย"><svg class="ico"><use href="#i-arrow-l"/></svg></button>
+        <button class="rbtn" type="button" id="railNext" aria-label="เลื่อนไปทางขวา"><svg class="ico"><use href="#i-arrow"/></svg></button>
+      </div>
     </div>
   </div>
+  <div class="rail" id="rail" tabindex="0" aria-label="สถานที่ท่องเที่ยว"></div>
 </section>
 
 <!-- ============ 6. NEWS & ACTIVITIES ============ -->
@@ -1016,14 +982,8 @@ img{display:block;max-width:100%}
         <p data-i18n="projDesc">ติดตามความคืบหน้าโครงการพัฒนาเมืองภายใต้แผนพัฒนาจังหวัดระยอง พ.ศ. 2568–2578</p>
       </div>
     </div>
-    <div class="cs cs-proj" id="csProj" data-interval="5500" role="region" aria-roledescription="carousel" aria-label="โครงการเมืองอัจฉริยะ">
-      <div class="cs-head">
-        <div class="psum" role="group" aria-label="กรองตามสถานะ" id="psum" style="margin:0"></div>
-        <div class="cs-ctrl"><button class="rbtn cs-prev" type="button" aria-label="โครงการก่อนหน้า"><svg class="ico"><use href="#i-arrow-l"/></svg></button><button class="rbtn cs-next" type="button" aria-label="โครงการถัดไป"><svg class="ico"><use href="#i-arrow"/></svg></button></div>
-      </div>
-      <div class="cs-track" id="projGrid" tabindex="0"></div>
-      <div class="cs-dots" role="group" aria-label="เลือกโครงการ"></div>
-    </div>
+    <div class="psum" role="group" aria-label="กรองตามสถานะ" id="psum"></div>
+    <div class="proj-grid" id="projGrid"></div>
     <p class="note"><svg class="ico" style="width:16px;height:16px"><use href="#i-info"/></svg>ความคืบหน้าเป็นข้อมูลตัวอย่างเพื่อการนำเสนอ</p>
   </div>
 </section>
@@ -1242,7 +1202,11 @@ rail.innerHTML=places.map(p=>`<a class="place" href="#explore" aria-label="${p.n
   <img src="assets/${p.id}.jpg" alt="" loading="lazy">
   <div class="meta"><span class="kind">${p.k}</span><h3>${p.name}</h3><p class="d">${p.p}</p>
   <div class="row"><span>${ic('pin','ico')}${p.d}</span><span class="go">${ic('up')}</span></div></div></a>`).join('');
-
+const step=()=>rail.querySelector('.place').getBoundingClientRect().width+20;
+$('#railPrev').onclick=()=>rail.scrollBy({left:-step(),behavior:'smooth'});
+$('#railNext').onclick=()=>rail.scrollBy({left:step(),behavior:'smooth'});
+const railState=()=>{$('#railPrev').disabled=rail.scrollLeft<8;$('#railNext').disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-8};
+rail.addEventListener('scroll',railState,{passive:true});addEventListener('resize',railState);railState();
 
 /* ---------- News ---------- */
 const waveSvg=`<svg class="wave" viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0 40 C60 20 120 60 200 40 S340 20 400 40 V100 H0Z" fill="#fff"/><path d="M0 65 C80 45 150 85 230 62 S350 50 400 64 V100 H0Z" fill="#fff" opacity=".6"/></svg>`;
@@ -1272,7 +1236,7 @@ function renderProj(){
     <h3>${p.t}</h3><p>${p.p}</p>
     <div class="prog ${s[2]}"><div class="lab"><span>ความคืบหน้า</span><b class="num">${p.pc}%</b></div><div class="tr" role="progressbar" aria-valuenow="${p.pc}" aria-valuemin="0" aria-valuemax="100" aria-label="ความคืบหน้า"><i style="width:${p.pc}%"></i></div></div>
     <div class="pmeta">${p.m.map(m=>`<div><span>${m[0]}</span><b>${m[1]}</b></div>`).join('')}</div></article>`}).join('');
-  $$('#psum button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;renderProj();window.csProj&&csProj.refresh(true)});
+  $$('#psum button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;renderProj()});
 }
 renderProj();
 
@@ -1308,45 +1272,6 @@ $('#calCount').textContent=events.length+' รายการ';
 $('#calList').innerHTML=events.map(e=>`<li><button type="button" data-d="${e[0]}"><span class="dn num">${e[0]}</span><span class="tt">${e[1]}</span><span class="tm">${e[2]}</span></button></li>`).join('');
 $$('#calList button').forEach(b=>b.onclick=()=>{selDay=+b.dataset.d;renderCal();$('#calDay').scrollIntoView({behavior:'smooth',block:'nearest'})});
 renderCal();
-
-/* ---------- Carousel: arrows, dots, swipe, mouse-drag, loop, autoplay ---------- */
-function Carousel(root){
-  const ctrl=root.dataset.ctrl?$(root.dataset.ctrl):root;const track=root.querySelector('.cs-track'),prev=ctrl.querySelector('.cs-prev'),next=ctrl.querySelector('.cs-next'),dotsEl=root.querySelector('.cs-dots');
-  const interval=+root.dataset.interval||5000,reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let idx=0,timer=null,resumeT=null,hover=false,visible=true,userPaused=false;
-  const items=()=>[...track.children];
-  const perView=()=>{const it=items();if(it.length<2)return 1;const w=it[0].getBoundingClientRect().width,g=parseFloat(getComputedStyle(track).columnGap)||0;return Math.max(1,Math.round((track.clientWidth-8+g)/(w+g)))};
-  const max=()=>Math.max(0,items().length-perView());
-  const posOf=i=>{const it=items();return it[i].offsetLeft-it[0].offsetLeft};
-  function mark(){const m=max();root.classList.toggle('single',m===0);if(ctrl!==root)ctrl.style.visibility=m===0?'hidden':'';$$('button',dotsEl).forEach((d,i)=>d.setAttribute('aria-current',i===idx))}
-  function dots(){const m=max();dotsEl.innerHTML=m?Array.from({length:m+1},(_,i)=>`<button type="button" aria-label="ไปที่รายการที่ ${i+1}"></button>`).join(''):'';$$('button',dotsEl).forEach((d,i)=>d.onclick=()=>{go(i);interact()});mark()}
-  function go(i,smooth=true){const it=items();if(!it.length)return;const m=max();idx=i>m?0:i<0?m:i;track.scrollTo({left:posOf(idx),behavior:smooth&&!reduceM?'smooth':'auto'});mark()}
-  function nearest(){const it=items();if(!it.length)return 0;const x=track.scrollLeft;let best=0,bd=1e9;for(let i=0;i<=max();i++){const d=Math.abs(posOf(i)-x);if(d<bd){bd=d;best=i}}return best}
-  let st;track.addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{idx=nearest();mark()},90)},{passive:true});
-  function stop(){clearInterval(timer);timer=null}
-  function start(){stop();if(reduceM||userPaused||max()===0)return;timer=setInterval(()=>{if(!hover&&visible&&!document.hidden)go(idx+1)},interval)}
-  function interact(){stop();clearTimeout(resumeT);resumeT=setTimeout(start,8000)}
-  prev.onclick=()=>{go(idx-1);interact()};next.onclick=()=>{go(idx+1);interact()};
-  track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(idx+1);interact()}if(e.key==='ArrowLeft'){e.preventDefault();go(idx-1);interact()}});
-  ['touchstart','wheel'].forEach(ev=>track.addEventListener(ev,interact,{passive:true}));
-  root.addEventListener('mouseenter',()=>hover=true);root.addEventListener('mouseleave',()=>hover=false);
-  root.addEventListener('focusin',interact);
-  /* mouse drag */
-  let down=false,sx=0,sl=0,moved=false;
-  track.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=track.scrollLeft;interact()});
-  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(!moved&&Math.abs(dx)>5){moved=true;track.classList.add('dragging')}if(moved)track.scrollLeft=sl-dx});
-  addEventListener('pointerup',e=>{if(!down)return;down=false;if(moved){const dx=e.clientX-sx;track.classList.remove('dragging');const n=nearest();go(Math.abs(dx)>40&&n===idx?idx+(dx<0?1:-1):n)}});
-  track.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
-  new IntersectionObserver(es=>{visible=es[0].isIntersecting},{threshold:.25}).observe(root);
-  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{dots();go(Math.min(idx,max()),false);start()},150)});
-  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
-  this.refresh=(reset)=>{dots();go(reset?0:Math.min(idx,max()),false);start()};
-  this.go=go;
-  dots();start();
-}
-window.csEco=new Carousel($('#csEco'));
-window.csExp=new Carousel($('#csExp'));
-window.csProj=new Carousel($('#csProj'));
 
 /* ---------- Header behaviour ---------- */
 const hdr=$('.hdr');
