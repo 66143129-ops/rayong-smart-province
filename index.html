@@ -506,6 +506,11 @@ img{display:block;max-width:100%}
 .exec b{font:600 1.08rem var(--f-display);color:var(--teal)}
 .exec small{font-size:.84rem;color:var(--ink-2)}
 .gov-links{display:flex;flex-wrap:wrap;gap:10px}
+.act .ph{margin:-18px -20px 4px;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r-l) var(--r-l) 0 0;background:var(--tint)}
+.act .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.act:hover .ph img{transform:scale(1.04)}
+.act .credit{font-size:.72rem;color:var(--ink-3);margin-top:-2px}
+.act{overflow:hidden}
 .act a.more{margin-top:6px;font:500 .84rem var(--f-display);color:var(--ocean)}
 .ann .tn{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
 .ann li:last-child .tn{border-bottom:0}
@@ -692,7 +697,7 @@ img{display:block;max-width:100%}
     <div class="acts">
       <h3><svg class="ico"><use href="#i-cal"/></svg>กิจกรรมผู้บริหารล่าสุด</h3>
       <div class="act-grid" id="acts"></div>
-      <p class="src" style="margin-top:12px">ที่มา: ข่าวกิจกรรมผู้บริหาร เว็บไซต์จังหวัดระยอง · <a href="http://rayong.go.th/web/activity/index/activity" target="_blank" rel="noopener">ดูกิจกรรมทั้งหมด</a> · ภาพกิจกรรมดูได้ที่ข่าวต้นฉบับ</p>
+      <p class="src" style="margin-top:12px">ที่มา: ข่าวกิจกรรมผู้บริหาร เว็บไซต์จังหวัดระยอง · <a href="http://rayong.go.th/web/activity/index/activity" target="_blank" rel="noopener">ดูกิจกรรมทั้งหมด</a> · ภาพ: สำนักงานจังหวัดระยอง</p>
     </div>
   </div>
 </section>
@@ -1149,11 +1154,11 @@ renderProj();
 
 
 /* ---------- Governor activities ---------- */
-const acts=[["1 พ.ย. 2569","ผู้ว่าราชการจังหวัด","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานโครงการ “แสงนำใจไทยทั้งชาติ เดิน วิ่ง ปั่น ป้องกันอัมพาต ครั้งที่ 12 เฉลิมพระเกียรติ”","สนามกีฬากลางจังหวัดระยอง","",RG+"activity/detail/3904"],
-["1 พ.ย. 2569","รองผู้ว่าราชการจังหวัด","นายกำธร เวหน รองผู้ว่าราชการจังหวัดระยอง เป็นประธานในงานปริวาสกรรม ประจำปี 2569","วัดช้างชนศิริราษฎร์บำรุง ต.ตะพง อ.เมืองระยอง","g",RG+"activity/detail/3903"],
-["26 ต.ค. 2569","ประชุม","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานการประชุมกรมการจังหวัด หัวหน้าส่วนราชการ นายอำเภอ และหัวหน้าหน่วยงานประจำจังหวัดระยอง ครั้งที่ 10/2569","ห้องภักดีศรีสงคราม ชั้น 4 ศาลากลางจังหวัดระยอง","t",RG+"activity/detail/3899"],
-["23 ต.ค. 2569","พิธีการ","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานในพิธีวางพวงมาลาถวายราชสักการะ เนื่องในวันปิยมหาราช","ลานหน้าศาลากลางจังหวัดระยอง","s",RG+"activity/detail/3897"]];
-$('#acts').innerHTML=acts.map(a=>`<article class="card act"><div class="top"><span class="cat ${a[4]}">${a[1]}</span><span class="num">${a[0]}</span></div><h4>${a[2]}</h4><small>${ic('pin')}${a[3]}</small><a class="more ext" href="${a[5]}" target="_blank" rel="noopener">ข่าวต้นฉบับ${ic('up')}</a></article>`).join('');
+const acts=[["1 พ.ย. 2569","ผู้ว่าราชการจังหวัด","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานโครงการ “แสงนำใจไทยทั้งชาติ เดิน วิ่ง ปั่น ป้องกันอัมพาต ครั้งที่ 12 เฉลิมพระเกียรติ”","สนามกีฬากลางจังหวัดระยอง","",RG+"activity/detail/3904","assets/activities/1nov-run.jpg"],
+["1 พ.ย. 2569","รองผู้ว่าราชการจังหวัด","นายกำธร เวหน รองผู้ว่าราชการจังหวัดระยอง เป็นประธานในงานปริวาสกรรม ประจำปี 2569","วัดช้างชนศิริราษฎร์บำรุง ต.ตะพง อ.เมืองระยอง","g",RG+"activity/detail/3903","assets/activities/1nov-pariwas.jpg"],
+["26 ต.ค. 2569","ประชุม","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานการประชุมกรมการจังหวัด หัวหน้าส่วนราชการ นายอำเภอ และหัวหน้าหน่วยงานประจำจังหวัดระยอง ครั้งที่ 10/2569","ห้องภักดีศรีสงคราม ชั้น 4 ศาลากลางจังหวัดระยอง","t",RG+"activity/detail/3899","assets/activities/26oct-meeting.jpg"],
+["23 ต.ค. 2569","พิธีการ","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานในพิธีวางพวงมาลาถวายราชสักการะ เนื่องในวันปิยมหาราช","ลานหน้าศาลากลางจังหวัดระยอง","s",RG+"activity/detail/3897","assets/activities/23oct-piyamaharaj.jpg"]];
+$('#acts').innerHTML=acts.map(a=>`<article class="card act"><div class="ph"><img src="${a[6]}" alt="${a[2]}" loading="lazy"></div><span class="credit">ภาพ: สำนักงานจังหวัดระยอง</span><div class="top"><span class="cat ${a[4]}">${a[1]}</span><span class="num">${a[0]}</span></div><h4>${a[2]}</h4><small>${ic('pin')}${a[3]}</small><a class="more ext" href="${a[5]}" target="_blank" rel="noopener">ข่าวต้นฉบับ${ic('up')}</a></article>`).join('');
 
 /* ---------- Executive agenda calendar (October 2569; 1 Oct is a Thursday) ---------- */
 const CC={"พิธีการ":["c-fest","s"],"กิจกรรม":["c-act",""],"ประชุม":["c-meet","t"],"ภารกิจ":["c-train","g"]};
