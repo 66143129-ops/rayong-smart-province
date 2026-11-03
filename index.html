@@ -480,10 +480,10 @@ img{display:block;max-width:100%}
 
 /* ---------- Animated waves ---------- */
 .waves{position:absolute;left:0;right:0;height:clamp(70px,9vw,140px);overflow:hidden;pointer-events:none}
-.waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%;animation:wave 18s linear infinite;will-change:transform}
-.waves .w1{height:100%;animation-delay:-4s;animation-duration:22s}
-.waves .w2{height:82%;animation-duration:14s;animation-direction:reverse}
-.waves .w3{height:62%;animation-duration:10s}
+.waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%}
+.waves .w1{height:100%}
+.waves .w2{height:82%;transform:translateX(-3%)}
+.waves .w3{height:62%;transform:translateX(-7%)}
 @keyframes wave{to{transform:translateX(-50%)}}
 .waves.hero-w{bottom:-1px;z-index:1}
 .waves.hero-w .w1 path{fill:rgba(143,227,223,.42)}
