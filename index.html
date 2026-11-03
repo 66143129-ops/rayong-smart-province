@@ -639,12 +639,9 @@ img{display:block;max-width:100%}
 <!-- ============ 2. HERO ============ -->
 <section class="hero" id="hero" aria-labelledby="hero-title">
   <div class="hero-media">
-    <video id="heroVid" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true">
-      <source src="assets/hero.mp4" type="video/mp4">
-    </video>
+    <img src="assets/hero-poster.jpg" alt="" width="1600" height="900" fetchpriority="high">
   </div>
   <div class="waves hero-w" aria-hidden="true"><svg class="w1" viewBox="0 0 2880 140" preserveAspectRatio="none"><path d="M0 60 Q 72.0 30 144.0 60 T 288 60 T 432 60 T 576 60 T 720 60 T 864 60 T 1008 60 T 1152 60 T 1296 60 T 1440 60 T 1584 60 T 1728 60 T 1872 60 T 2016 60 T 2160 60 T 2304 60 T 2448 60 T 2592 60 T 2736 60 T 2880 60 V140 H0 Z"/></svg><svg class="w2" viewBox="0 0 2880 140" preserveAspectRatio="none"><path d="M0 74 Q 60.0 96 120.0 74 T 240 74 T 360 74 T 480 74 T 600 74 T 720 74 T 840 74 T 960 74 T 1080 74 T 1200 74 T 1320 74 T 1440 74 T 1560 74 T 1680 74 T 1800 74 T 1920 74 T 2040 74 T 2160 74 T 2280 74 T 2400 74 T 2520 74 T 2640 74 T 2760 74 T 2880 74 V140 H0 Z"/></svg><svg class="w3" viewBox="0 0 2880 140" preserveAspectRatio="none"><path d="M0 86 Q 90.0 66 180.0 86 T 360 86 T 540 86 T 720 86 T 900 86 T 1080 86 T 1260 86 T 1440 86 T 1620 86 T 1800 86 T 1980 86 T 2160 86 T 2340 86 T 2520 86 T 2700 86 T 2880 86 V140 H0 Z"/></svg></div>
-  <button class="vid-toggle" type="button" id="vidToggle" aria-label="หยุดวิดีโอพื้นหลัง"><svg class="ico"><use href="#i-pause"/></svg></button>
   <div class="wrap">
     <div class="hero-inner">
       <span class="pill"><i></i><span data-i18n="heroPill">Rayong Smart Province · จังหวัดอัจฉริยะ</span></span>
@@ -1220,13 +1217,7 @@ function setLang(l){
 $$('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 try{const l=localStorage.getItem('rsp-lang');if(l==='en')setLang('en')}catch(e){}
 
-/* ---------- Hero video ---------- */
-const vid=$('#heroVid'),vt=$('#vidToggle');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const setVt=()=>{const p=vid.paused;vt.innerHTML=ic(p?'play':'pause');vt.setAttribute('aria-label',p?'เล่นวิดีโอพื้นหลัง':'หยุดวิดีโอพื้นหลัง')};
-if(reduce){vid.removeAttribute('autoplay');vid.pause()}
-vt.onclick=()=>{vid.paused?vid.play().catch(()=>{}):vid.pause()};
-vid.addEventListener('play',setVt);vid.addEventListener('pause',setVt);setVt();
+
 
 /* ---------- Search ---------- */
 const idx=[
