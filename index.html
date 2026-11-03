@@ -105,17 +105,19 @@ img{display:block;max-width:100%}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;color:#fff;isolation:isolate;overflow:hidden;background:var(--teal)}
-.hero-media{position:absolute;inset:0;z-index:-2}
-.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover}
+.hero-media{position:absolute;inset:-4% 0 0;z-index:-2;will-change:transform}
+.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.04);animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 70% 40%,rgba(0,0,0,0) 55%,rgba(2,24,34,.45) 100%)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(98deg,rgba(4,40,56,.88) 0%,rgba(6,72,104,.70) 38%,rgba(10,120,140,.28) 70%,rgba(20,174,176,.08) 100%),
-  linear-gradient(0deg,rgba(4,40,56,.55) 0%,rgba(4,40,56,0) 40%)}
+  linear-gradient(98deg,rgba(4,40,56,.86) 0%,rgba(6,72,104,.58) 34%,rgba(10,120,140,.14) 62%,rgba(20,174,176,0) 100%),
+  linear-gradient(0deg,rgba(4,40,56,.5) 0%,rgba(4,40,56,0) 38%)}
 .hero>.wrap{padding-block:clamp(72px,11vw,132px) clamp(36px,4vw,56px)}
 .hero-inner{max-width:720px;display:flex;flex-direction:column;gap:22px;animation:rise .9s var(--ease) both}
 @keyframes rise{from{transform:translateY(14px)}}
 .pill{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);font:500 .82rem var(--f-display);letter-spacing:.06em}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(242,183,5,.25)}
-.hero h1{color:#fff;font-weight:600;font-size:clamp(2.6rem,7.2vw,5.4rem);line-height:1.08;letter-spacing:-.01em}
+.hero h1{color:#fff;font-weight:600;font-size:clamp(2.6rem,7.2vw,5.4rem);line-height:1.08;letter-spacing:-.01em;filter:drop-shadow(0 6px 24px rgba(2,24,34,.45))}
 .hero h1 span{display:block;background:linear-gradient(90deg,#fff 0%,#c9f3f0 55%,#8fe3df 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{font:500 clamp(1.15rem,2.3vw,1.6rem)/1.45 var(--f-display);color:#fff}
 .hero .sub em{font-style:normal;color:var(--sun)}
@@ -1188,6 +1190,10 @@ $('#calCount').textContent=events.length+' รายการ';
 $('#calList').innerHTML=events.map(e=>`<li><button type="button" data-d="${e[0]}"><span class="dn num">${e[0]}</span><span class="tt">${e[1]}</span><span class="tm">${e[2]}</span></button></li>`).join('');
 $$('#calList button').forEach(b=>b.onclick=()=>{selDay=+b.dataset.d;renderCal();$('#calDay').scrollIntoView({behavior:'smooth',block:'nearest'})});
 renderCal();
+
+/* ---------- Hero parallax ---------- */
+const hm=$('.hero-media');
+if(hm&&!matchMedia('(prefers-reduced-motion: reduce)').matches){let tk=false;addEventListener('scroll',()=>{if(tk)return;tk=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,900);hm.style.transform=`translateY(${y*0.25}px)`;tk=false})},{passive:true})}
 
 /* ---------- Header behaviour ---------- */
 const hdr=$('.hdr');
