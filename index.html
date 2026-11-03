@@ -493,6 +493,35 @@ img{display:block;max-width:100%}
 .waves.foot-w .w1 path{fill:rgba(20,174,176,.28)}
 .waves.foot-w .w2 path{fill:rgba(10,90,134,.55)}
 .waves.foot-w .w3 path{fill:var(--teal)}
+
+/* ---------- Verified-source details ---------- */
+.src{display:block;font-size:.78rem;color:var(--ink-3);line-height:1.5}
+.src a{color:var(--ocean);text-decoration:underline;text-underline-offset:2px}
+.ext{display:inline-flex;align-items:center;gap:4px}
+.ext .ico{width:14px;height:14px}
+.execs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.exec{background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.exec.lead{grid-column:1/-1;border-color:#cfe3ea;background:linear-gradient(140deg,var(--tint),var(--card))}
+.exec span{font:600 .74rem var(--f-display);letter-spacing:.06em;color:var(--turq)}
+.exec b{font:600 1.08rem var(--f-display);color:var(--teal)}
+.exec small{font-size:.84rem;color:var(--ink-2)}
+.gov-links{display:flex;flex-wrap:wrap;gap:10px}
+.act a.more{margin-top:6px;font:500 .84rem var(--f-display);color:var(--ocean)}
+.ann .tn{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ann li:last-child .tn{border-bottom:0}
+.ann .tl{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
+.ann .tl a{display:inline;padding:0;border:0;font:500 .8rem var(--f-display);color:var(--ocean);text-decoration:underline;text-underline-offset:2px}
+.aside .more-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.aside .more-list .link-more{margin-top:0;justify-content:space-between}
+.cal-note{margin-top:16px;padding:14px 16px;border-radius:var(--r-m);background:var(--sun-50);color:#6b5200;font-size:.86rem;line-height:1.6}
+.cal-note a{color:var(--ocean);text-decoration:underline;text-underline-offset:2px}
+.ev .who{font-size:.84rem;color:var(--ink-2);margin-top:2px}
+.ev a.more{display:inline-flex;margin-top:6px;font:500 .84rem var(--f-display);color:var(--ocean)}
+.svc .nf{font-size:.8rem;color:var(--ink-3);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:8px 12px}
+.svc .metric b{white-space:nowrap}
+.svc li a .ext-i{width:14px;height:14px;color:var(--ink-3)}
+.checked{font-size:.82rem;color:var(--ink-3);margin-top:-18px;margin-bottom:22px}
+@media (max-width:560px){.execs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -547,6 +576,7 @@ img{display:block;max-width:100%}
       <a href="#services" data-i18n="navSvc">บริการ</a>
       <a href="#explore" data-i18n="navExp">ท่องเที่ยว</a>
       <a href="#news" data-i18n="navNews">ข่าวสาร</a>
+      <a href="#gov-info" data-i18n="navInfo">ข้อมูลภาครัฐ</a>
       <a href="#projects" data-i18n="navProj">โครงการ</a>
       <a href="#contact" data-i18n="navContact">ติดต่อ</a>
     </nav>
@@ -574,12 +604,13 @@ img{display:block;max-width:100%}
       <button class="tbtn" type="button" data-close-drawer aria-label="ปิดเมนู"><svg class="ico"><use href="#i-close"/></svg></button>
     </div>
     <nav aria-label="เมนูมือถือ">
-      <a href="#governor"><span data-i18n="navGov">ผู้ว่าราชการจังหวัด</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a href="#governor"><span data-i18n="navGov">ผู้บริหารจังหวัด</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#dashboard"><span data-i18n="navDash">ข้อมูลเมือง</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#services"><span data-i18n="navSvc">บริการ</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#explore"><span data-i18n="navExp">ท่องเที่ยว</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#news"><span data-i18n="navNews">ข่าวสาร</span><svg class="ico"><use href="#i-arrow"/></svg></a>
-      <a href="#calendar"><span data-i18n="navCal">ปฏิทินกิจกรรม</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a href="#calendar"><span data-i18n="navCal">ปฏิทินวาระผู้บริหาร</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a href="#gov-info"><span data-i18n="navInfo">ข้อมูลภาครัฐ</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#projects"><span data-i18n="navProj">โครงการ</span><svg class="ico"><use href="#i-arrow"/></svg></a>
       <a href="#contact"><span data-i18n="navContact">ติดต่อ</span><svg class="ico"><use href="#i-arrow"/></svg></a>
     </nav>
@@ -639,19 +670,29 @@ img{display:block;max-width:100%}
     <div class="gov">
       <figure class="gov-photo" style="margin:0">
         <img src="assets/governor.jpg" alt="นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง" width="600" height="840" loading="lazy">
-        <figcaption class="gov-name"><b>นายไตรภพ วงศ์ไตรรัตน์</b><span>ผู้ว่าราชการจังหวัดระยอง · ดำรงตำแหน่งตั้งแต่ พ.ศ. 2566</span></figcaption>
+        <figcaption class="gov-name"><b>นายไตรภพ วงศ์ไตรรัตน์</b><span>ผู้ว่าราชการจังหวัดระยอง</span></figcaption>
       </figure>
       <div class="gov-text">
-        <span class="eyebrow">Governor's Message</span>
-        <h2 id="gov-title" data-i18n="govTitle">สารจากผู้ว่าราชการจังหวัด</h2>
-        <p>จังหวัดระยองกำลังก้าวเข้าสู่บทใหม่ของการพัฒนา จากเมืองอุตสาหกรรมชายฝั่งทะเลตะวันออก สู่จังหวัดอัจฉริยะที่เศรษฐกิจ สิ่งแวดล้อม และคุณภาพชีวิตของประชาชนเติบโตไปด้วยกันอย่างสมดุล</p>
-        <p>ภายใต้แผนพัฒนาจังหวัดระยอง พ.ศ. 2568–2578 เรามุ่งใช้เทคโนโลยีดิจิทัล ข้อมูลเปิด และการมีส่วนร่วมของประชาชนทุกภาคส่วน เป็นกลไกขับเคลื่อนเมือง เพื่อให้ระยองเป็นบ้านที่น่าอยู่ น่าลงทุน และน่ามาเยือนของทุกคน</p>
-        <blockquote class="quote" style="margin-inline:0">ระยองเมืองน่าอยู่ เศรษฐกิจมูลค่าสูง สังคมมีสุข สิ่งแวดล้อมยั่งยืน</blockquote>
+        <span class="eyebrow">Provincial Executives</span>
+        <h2 id="gov-title" data-i18n="govTitle">ผู้บริหารจังหวัดระยอง</h2>
+        <div class="execs">
+          <div class="exec lead"><span>ผู้ว่าราชการจังหวัดระยอง</span><b>นายไตรภพ วงศ์ไตรรัตน์</b><small class="num">โทร. 0-3869-4001-2</small></div>
+          <div class="exec"><span>รองผู้ว่าราชการจังหวัดระยอง</span><b>นางสาวสลารีวรรณ ทัพทวี</b><small class="num">โทร. 0-3869-4004</small></div>
+          <div class="exec"><span>รองผู้ว่าราชการจังหวัดระยอง</span><b>นายกำธร เวหน</b><small class="num">โทร. 0-3869-4003</small></div>
+          <div class="exec"><span>ปลัดจังหวัดระยอง</span><b>นายศักดาวุธ ศักดิเศรษฐ์</b><small class="num">โทร. 0-3869-4005</small></div>
+          <div class="exec"><span>สำนักงานจังหวัดระยอง</span><b>ศูนย์ราชการจังหวัดระยอง</b><small class="num">โทร. 0-3869-4000</small></div>
+        </div>
+        <div class="gov-links">
+          <a class="link-more" href="http://rayong.go.th/web/department/detail/43" target="_blank" rel="noopener">ทำเนียบผู้บริหาร<svg class="ico"><use href="#i-up"/></svg></a>
+          <a class="link-more" href="http://rayong.go.th/web/department/detail/189" target="_blank" rel="noopener">ประวัติผู้ว่าราชการจังหวัด<svg class="ico"><use href="#i-up"/></svg></a>
+        </div>
+        <span class="src">ที่มา: ทำเนียบผู้บริหาร เว็บไซต์จังหวัดระยอง (rayong.go.th) · ตรวจสอบเมื่อ 3 พ.ย. 2569 · สารจากผู้ว่าราชการจังหวัด: ยังไม่พบการเผยแพร่อย่างเป็นทางการ</span>
       </div>
     </div>
     <div class="acts">
-      <h3><svg class="ico"><use href="#i-cal"/></svg>กิจกรรมผู้บริหารล่าสุด <span class="sample">ข้อมูลตัวอย่าง</span></h3>
+      <h3><svg class="ico"><use href="#i-cal"/></svg>กิจกรรมผู้บริหารล่าสุด</h3>
       <div class="act-grid" id="acts"></div>
+      <p class="src" style="margin-top:12px">ที่มา: ข่าวกิจกรรมผู้บริหาร เว็บไซต์จังหวัดระยอง · <a href="http://rayong.go.th/web/activity/index/activity" target="_blank" rel="noopener">ดูกิจกรรมทั้งหมด</a> · ภาพกิจกรรมดูได้ที่ข่าวต้นฉบับ</p>
     </div>
   </div>
 </section>
@@ -743,7 +784,7 @@ img{display:block;max-width:100%}
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">Smart City Services</span>
+        <span class="eyebrow">Smart City Services <span class="sample">ข้อมูลตัวอย่าง</span></span>
         <h2 id="svc-title" data-i18n="svcTitle">บริการเมืองอัจฉริยะ</h2>
         <p data-i18n="svcDesc">บริการภาครัฐครบวงจรสำหรับประชาชนและผู้ประกอบการ ยื่นคำร้อง ชำระภาษี จองคิว และติดตามเรื่องได้ทุกที่ทุกเวลา</p>
       </div>
@@ -776,18 +817,23 @@ img{display:block;max-width:100%}
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">News &amp; Activities <span class="sample">ข้อมูลตัวอย่าง</span></span>
-        <h2 id="news-title" data-i18n="newsTitle">ข่าวสารและกิจกรรม</h2>
-        <p data-i18n="newsDesc">ติดตามความเคลื่อนไหวของเมืองอัจฉริยะ ประกาศจังหวัด และกิจกรรมสำคัญของระยอง</p>
+        <span class="eyebrow">News &amp; Procurement</span>
+        <h2 id="news-title" data-i18n="newsTitle">ข่าวประชาสัมพันธ์และประกวดราคา</h2>
+        <p data-i18n="newsDesc">ข่าวและประกาศล่าสุดจากสำนักงานจังหวัดระยองและสำนักงานประชาสัมพันธ์จังหวัดระยอง พร้อมประกาศประกวดราคาจากระบบข่าวประกวดราคาของจังหวัด</p>
       </div>
-      <a class="link-more" href="#news"><span data-i18n="allNews">ดูข่าวทั้งหมด</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="link-more" href="http://123.242.173.4/rayong_eoffice/application/information/public2.php?boardid=2" target="_blank" rel="noopener"><span data-i18n="allNews">ดูข่าวทั้งหมด</span><svg class="ico"><use href="#i-up"/></svg></a>
     </div>
     <div class="news">
       <div class="news-main" id="newsMain"></div>
-      <aside class="card aside" aria-label="ประกาศจังหวัด">
-        <h3><svg class="ico"><use href="#i-bell"/></svg>ประกาศจังหวัด</h3>
+      <aside class="card aside" aria-label="ประกวดราคาล่าสุด">
+        <h3><svg class="ico"><use href="#i-bell"/></svg>ประกวดราคาล่าสุด</h3>
         <ul class="ann" id="ann"></ul>
-        <a class="link-more" href="#news">ดูประกาศทั้งหมด<svg class="ico"><use href="#i-arrow"/></svg></a>
+        <div class="more-list">
+          <a class="link-more" href="http://rayong.go.th/web/department/detail/51" target="_blank" rel="noopener">ประกาศประกวดราคาทั้งหมด<svg class="ico"><use href="#i-up"/></svg></a>
+          <a class="link-more" href="http://123.242.173.4/rayong_eoffice/application/auction_news_v2/public2.php" target="_blank" rel="noopener">สรุปผลการจัดซื้อจัดจ้าง / ผู้ชนะ<svg class="ico"><use href="#i-up"/></svg></a>
+          <a class="link-more" href="https://www.gprocurement.go.th/new_index.html" target="_blank" rel="noopener">ระบบ e-GP กรมบัญชีกลาง<svg class="ico"><use href="#i-up"/></svg></a>
+        </div>
+        <span class="src" style="margin-top:12px">ที่มา: ระบบข่าวประกวดราคา สำนักงานจังหวัดระยอง · ตรวจสอบเมื่อ 3 พ.ย. 2569</span>
       </aside>
     </div>
   </div>
@@ -798,27 +844,43 @@ img{display:block;max-width:100%}
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">Event Calendar <span class="sample">ข้อมูลตัวอย่าง</span></span>
-        <h2 id="cal-title" data-i18n="calTitle">ปฏิทินกิจกรรมจังหวัด</h2>
-        <p data-i18n="calDesc">ติดตามงานเทศกาล การประชุม และกิจกรรมสำคัญของจังหวัดระยอง เลือกวันที่ในปฏิทินเพื่อดูรายละเอียดกิจกรรม</p>
+        <span class="eyebrow">Executive Agenda</span>
+        <h2 id="cal-title" data-i18n="calTitle">ปฏิทินวาระผู้บริหาร</h2>
+        <p data-i18n="calDesc">ภารกิจและการประชุมของผู้บริหารจังหวัดระยองเดือนตุลาคม 2569 จากเว็บไซต์จังหวัดระยอง เลือกวันที่ในปฏิทินเพื่อดูรายละเอียด</p>
       </div>
     </div>
     <div class="cal">
       <article class="card cal-month">
-        <div class="cal-head"><h3>มิถุนายน 2569</h3><span id="calCount"></span></div>
+        <div class="cal-head"><h3>ตุลาคม 2569</h3><span id="calCount"></span></div>
         <div class="cal-grid" id="calGrid"></div>
-        <div class="legend"><span><i class="c-fest"></i>เทศกาล</span><span><i class="c-act"></i>กิจกรรม</span><span><i class="c-meet"></i>ประชุม</span><span><i class="c-train"></i>อบรม</span></div>
+        <div class="legend"><span><i class="c-fest"></i>พิธีการ</span><span><i class="c-meet"></i>ประชุม</span><span><i class="c-act"></i>กิจกรรม</span><span><i class="c-train"></i>ภารกิจ</span></div>
+        <div class="cal-note"><b>กำหนดการล่วงหน้า (พ.ย. 2569):</b> ยังไม่พบข้อมูลในระบบปฏิทินและนัดหมายของจังหวัด ณ วันที่ 3 พ.ย. 2569 · <a href="http://rayong.go.th/web/department/detail/22" target="_blank" rel="noopener">ระบบปฏิทินและนัดหมาย</a><br><b>เอกสารประกอบการประชุม:</b> หนังสือเชิญประชุมกรมการจังหวัดเผยแพร่ใน <a href="http://rayong.go.th/web/department/detail/52" target="_blank" rel="noopener">หนังสือเวียน สนจ.รย.</a> (ฉบับล่าสุดที่พบ ครั้งที่ 8/2567) · <b>รายงานการประชุม:</b> ยังไม่พบการเผยแพร่ต่อสาธารณะ</div>
       </article>
       <div class="cal-side">
         <article class="card cal-day" aria-live="polite" id="calDay"></article>
-        <article class="card upc"><h3>กิจกรรมตลอดเดือน</h3><ul id="calList"></ul></article>
+        <article class="card upc"><h3>ภารกิจตลอดเดือน</h3><ul id="calList"></ul><span class="src" style="margin-top:10px">ที่มา: ข่าวกิจกรรมผู้บริหาร เว็บไซต์จังหวัดระยอง</span></article>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============ GOVERNMENT INFORMATION ============ -->
+<section class="sec white" id="gov-info" aria-labelledby="info-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Government Information</span>
+        <h2 id="info-title" data-i18n="infoTitle">ข้อมูลและบริการภาครัฐ</h2>
+        <p data-i18n="infoDesc">คลังข้อมูล เอกสารดาวน์โหลด ระบบสำนักงานอิเล็กทรอนิกส์ ศูนย์ดำรงธรรม และระบบสารสนเทศของจังหวัดระยอง ทุกลิงก์เชื่อมไปยังเว็บไซต์หน่วยงานราชการต้นทาง</p>
+      </div>
+    </div>
+    <p class="checked">ตรวจสอบลิงก์ทุกรายการเมื่อ 3 พ.ย. 2569</p>
+    <div class="svc-grid" id="infoGrid"></div>
+  </div>
+</section>
+
 <!-- ============ 7. SMART CITY PROJECTS ============ -->
-<section class="sec white" id="projects" aria-labelledby="proj-title">
+<section class="sec" id="projects" aria-labelledby="proj-title">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -852,29 +914,32 @@ img{display:block;max-width:100%}
       <div>
         <h4>เมนูหลัก</h4>
         <ul>
-          <li><a href="#governor">สารจากผู้ว่าราชการจังหวัด</a></li>
+          <li><a href="#governor">ผู้บริหารจังหวัด</a></li>
           <li><a href="#dashboard">ข้อมูลเมือง</a></li>
           <li><a href="#services">บริการเมืองอัจฉริยะ</a></li>
           <li><a href="#explore">ท่องเที่ยวและของดี</a></li>
-          <li><a href="#news">ข่าวสารและกิจกรรม</a></li>
-          <li><a href="#calendar">ปฏิทินกิจกรรม</a></li>
+          <li><a href="#news">ข่าวประชาสัมพันธ์และประกวดราคา</a></li>
+          <li><a href="#calendar">ปฏิทินวาระผู้บริหาร</a></li>
+          <li><a href="#gov-info">ข้อมูลและบริการภาครัฐ</a></li>
           <li><a href="#projects">โครงการเมืองอัจฉริยะ</a></li>
         </ul>
       </div>
       <div>
         <h4>บริการออนไลน์</h4>
         <ul>
-          <li><a href="#services">ยื่นคำร้องออนไลน์</a></li>
-          <li><a href="#services">ชำระภาษีและค่าธรรมเนียม</a></li>
-          <li><a href="#services">จองคิวรับบริการ</a></li>
-          <li><a href="#services">แจ้งเรื่องร้องเรียน</a></li>
-          <li><a href="#services">ขอใบอนุญาตอิเล็กทรอนิกส์</a></li>
+          <li><a href="https://damrongdham.moi.go.th/complaint/form" target="_blank" rel="noopener">ร้องเรียน/ร้องทุกข์ ศูนย์ดำรงธรรม</a></li>
+          <li><a href="http://rayong.go.th/web/department/detail/113" target="_blank" rel="noopener">e-Service หน่วยงานในจังหวัด</a></li>
+          <li><a href="https://rayong.gdcatalog.go.th/" target="_blank" rel="noopener">ระบบบัญชีข้อมูลจังหวัดระยอง</a></li>
+          <li><a href="http://rayong.go.th/web/department/detail/51" target="_blank" rel="noopener">ระบบข่าวประกวดราคา</a></li>
+          <li><a href="http://rayong.go.th/web/department" target="_blank" rel="noopener">ดาวน์โหลดเอกสาร</a></li>
         </ul>
       </div>
       <div>
-        <h4>ที่ตั้ง</h4>
+        <h4>ติดต่อจังหวัด</h4>
         <ul class="contact">
-                    <li><svg class="ico"><use href="#i-pin"/></svg><span>ศูนย์ราชการจังหวัดระยอง ถ.สุขุมวิท ต.เนินพระ อ.เมืองระยอง 21150</span></li>
+          <li><svg class="ico"><use href="#i-phone"/></svg><span>โทรศัพท์/โทรสาร<br><b class="num">0-3869-4000</b></span></li>
+          <li><svg class="ico"><use href="#i-mail"/></svg><span>อีเมล<br><b>rayong@moi.go.th</b><br><b>saraban_rayong@moi.go.th</b></span></li>
+          <li><svg class="ico"><use href="#i-pin"/></svg><span>ศูนย์ราชการจังหวัดระยอง ถนนสุขุมวิท ตำบลเนินพระ อำเภอเมืองระยอง จังหวัดระยอง 21150</span></li>
         </ul>
       </div>
     </div>
@@ -889,7 +954,7 @@ img{display:block;max-width:100%}
     </div>
     <div class="fbottom">
       <span>ผลงานออกแบบต้นแบบ · Rayong Smart Province</span>
-      <span>เว็บไซต์ต้นแบบเพื่อการนำเสนอวิสัยทัศน์ · ข้อมูลทั้งหมดเป็นข้อมูลจำลอง</span>
+      <span>ข่าว ประกวดราคา กิจกรรมผู้บริหาร และข้อมูลภาครัฐ อ้างอิงจากเว็บไซต์หน่วยงานราชการ · ส่วนที่มีป้าย “ข้อมูลตัวอย่าง” ยังเป็นข้อมูลจำลอง</span>
     </div>
   </div>
 </footer>
@@ -935,19 +1000,66 @@ const places=[
  {id:"watpa",name:"วัดป่าประดู่",d:"อ.เมืองระยอง",k:"ศาสนสถาน",p:"พระพุทธไสยาสน์ตะแคงซ้ายหนึ่งเดียวในไทย"},
  {id:"tungprong",name:"อนุสรณ์เรือรบหลวงประแส",d:"ปากน้ำประแส อ.แกลง",k:"ประวัติศาสตร์",p:"เรือรบหลวงประแส 412 ริมปากแม่น้ำประแส"}
 ];
+const RG='http://rayong.go.th/web/', EO='http://123.242.173.4/rayong_eoffice/application/information/information_view_detail.php?action=view&id=';
 const news=[
- {cat:"สมาร์ทซิตี้",c:"",t:"ระยองเปิดตัวระบบ Digital Twin เมืองเฟส 2 ครอบคลุม 6 เขตอัจฉริยะ",e:"ศูนย์บัญชาการเมืองอัจฉริยะเชื่อมข้อมูลเรียลไทม์จากเซนเซอร์กว่า 5,000 จุด พยากรณ์จราจรและคุณภาพอากาศล่วงหน้า 48 ชั่วโมง",d:"28 พ.ค. 2569",img:"assets/map-3d.jpg"},
- {cat:"ข่าว",c:"t",t:"โซลาร์ฟาร์มลอยน้ำอ่างเก็บน้ำดอกกรายผลิตไฟฟ้าทะลุ 48 GWh",e:"โครงการพลังงานสะอาดที่ใหญ่ที่สุดของจังหวัด ลดการปล่อยคาร์บอนเทียบเท่าปลูกต้นไม้ 2.1 ล้านต้น",d:"22 พ.ค. 2569",img:"assets/news-solar.jpg"},
- {cat:"กิจกรรม",c:"s",t:"เทศกาลผลไม้และของดีเมืองระยอง บุฟเฟ่ต์ทุเรียนจากสวนอัจฉริยะ",e:"พบสุดยอดทุเรียน มังคุด เงาะจากสวนเกษตรแม่นยำ 120 สวน พร้อมระบบจองคิวเข้าสวนผ่านแอป 12–21 มิ.ย. นี้",d:"15 พ.ค. 2569",img:"assets/news-fruit.jpg",pos:"50% 16%"},
- {cat:"สมาร์ทซิตี้",c:"",t:"EV Shuttle สายใหม่เชื่อมสถานีรถไฟความเร็วสูง–บ้านเพ–หาดแม่รำพึง",e:"รถรับส่งไฟฟ้าไร้คนขับระดับ 4 ทดลองวิ่งเส้นทางท่องเที่ยวชายฝั่ง ฟรีตลอดเดือนมิถุนายน",d:"6 พ.ค. 2569",img:"assets/maerampueng.jpg"},
- {cat:"ข่าว",c:"t",t:"EECi วังจันทร์วัลเลย์ต้อนรับสตาร์ทอัพดีพเทคใหม่ 24 ทีมจาก 8 ประเทศ",e:"โครงการบ่มเพาะ Rayong Deep Tech Accelerator รุ่นที่ 4 เน้นพลังงานสะอาด หุ่นยนต์ และเกษตรอัจฉริยะ",d:"2 พ.ค. 2569",img:"assets/news-eeci.jpg"}
+ {cat:"ข่าวจังหวัด",c:"",t:"ระยองอัปเดตประกาศพื้นที่ประสบอุทกภัย ครบ 8 อำเภอ เร่งเปิดทางช่วยเหลือประชาชนตามระเบียบ",e:"จังหวัดระยองปรับปรุงประกาศเขตพื้นที่ประสบอุทกภัยให้ครอบคลุมทั้ง 8 อำเภอ หลังเกิดฝนตกหนักและน้ำป่าไหลหลากตั้งแต่ 25 ก.ย. 2569 พร้อมประกาศเขตการให้ความช่วยเหลือผู้ประสบภัยใน 5 อำเภอ ประชาชนตรวจสอบรายชื่อตำบล หมู่บ้าน และชุมชนได้จากประกาศฉบับเต็ม",d:"3 ต.ค. 2569",src:"สำนักงานประชาสัมพันธ์จังหวัดระยอง",url:"https://rayong.prd.go.th/th/content/category/detail/id/33/iid/548477",art:"wave"},
+ {cat:"ประชาสัมพันธ์",c:"t",t:"สรุปผลการประชุมรับฟังความคิดเห็นของประชาชนครั้งที่ 1 โครงการท่อส่งก๊าซธรรมชาติสำหรับโรงไฟฟ้าก๊าซธรรมชาติ ABPR3 (ส่วนขยาย)",e:"",d:"30 ต.ค. 2569",src:"สำนักงานจังหวัดระยอง",url:EO+"8900",art:"bolt"},
+ {cat:"ประกาศ",c:"s",t:"สำนักงานสหกรณ์จังหวัดระยอง ประกาศเรื่องการใช้ประโยชน์ที่ดินในเขตนิคมสหกรณ์ชะแวะ จังหวัดระยอง",e:"",d:"26 ต.ค. 2569",src:"สำนักงานจังหวัดระยอง",url:EO+"8898",art:"map"},
+ {cat:"ประชาสัมพันธ์",c:"t",t:"สำนักงานศาลปกครองระยอง จัดอบรมหลักสูตร “กฎหมายปกครองกับการจัดการสิ่งแวดล้อมและชุมชน” 11–13 พ.ย. 2569",e:"",d:"20 ต.ค. 2569",src:"สำนักงานจังหวัดระยอง",url:EO+"8897",art:"people"},
+ {cat:"ประกาศ",c:"s",t:"ประกาศกรมชลประทาน กำหนดวันเริ่มดำเนินการก่อสร้างโครงการคลองระบายน้ำคลองทับมา–คลองกะแมง",e:"",d:"19 ต.ค. 2569",src:"สำนักงานจังหวัดระยอง",url:EO+"8893",art:"wave"}
 ];
-const ann=[
- ["1","มิ.ย.","จังหวัดระยองเปิดรับสมัครอาสาสมัครดิจิทัลชุมชน รุ่นที่ 5 จำนวน 300 อัตรา","สำนักงานจังหวัดระยอง"],
- ["28","พ.ค.","ขอเชิญประชาชนร่วมประชาพิจารณ์ผังเมืองรวมจังหวัดระยอง ฉบับปรับปรุงครั้งที่ 4","สำนักงานโยธาธิการและผังเมืองจังหวัด"],
- ["22","พ.ค.","ประกาศเขตพื้นที่เฝ้าระวังคุณภาพอากาศ พร้อมมาตรการช่วยเหลือเกษตรกรงดเผา","สำนักงานทรัพยากรธรรมชาติและสิ่งแวดล้อมจังหวัด"],
- ["18","พ.ค.","กำหนดการจ่ายเบี้ยยังชีพผู้สูงอายุและเบี้ยความพิการ ประจำเดือนมิถุนายน 2569","สำนักงานพัฒนาสังคมและความมั่นคงของมนุษย์จังหวัด"],
- ["12","พ.ค.","เปิดให้บริการหน่วยทะเบียนเคลื่อนที่ (Mobile One ID) ประจำเดือนมิถุนายน","ที่ทำการปกครองจังหวัดระยอง"]
+const UP='http://123.242.173.4/rayong_eoffice/upload/action/202610/';
+const tenders=[
+ ["29","ต.ค.","ก่อสร้างถนนคอนกรีตเสริมเหล็ก ซอยห้างแก้ว ๑๐/๓ (ซอยมีสุขต่อจากเดิม) หมู่ที่ ๔ ต.มาบยางพร อ.ปลวกแดง","อบต.มาบยางพร · ราคากลาง 711,725 บาท · ยื่นเอกสาร 6 พ.ย. 2569",UP+"08ctpud0svwbkjcl.pdf",UP+"by932q7gedk95i84.pdf"],
+ ["29","ต.ค.","ติดตั้งไฟส่องสว่างแบบชุดโคมกิ่งเดี่ยว ซอยข้างโรงงานทรัพย์ไพศาล หมู่ที่ 4 ต.มาบยางพร อ.ปลวกแดง","อบต.มาบยางพร · ราคากลาง 499,076 บาท · ยื่นเอกสาร 6 พ.ย. 2569",UP+"wugk7eir0omcft3b.pdf",UP+"1ebpm8cfacl2buz4.pdf"],
+ ["29","ต.ค.","ก่อสร้างถนนคอนกรีตเสริมเหล็ก ซอยห้างแก้ว 12 (ต่อจากเดิม) หมู่ที่ 4 ต.มาบยางพร อ.ปลวกแดง","อบต.มาบยางพร · ราคากลาง 556,964 บาท · ยื่นเอกสาร 6 พ.ย. 2569",UP+"oha8s4wck2o8s58a.pdf",UP+"l6vyfycioo35vvsj.pdf"],
+ ["20","ต.ค.","ก่อสร้างถนนคอนกรีตเสริมเหล็ก ซอยชากอ้อยพัฒนา ๖ หมู่ที่ ๗ ต.มาบยางพร อ.ปลวกแดง","อบต.มาบยางพร · ราคากลาง 7,311,847 บาท · ยื่นเอกสาร 5 พ.ย. 2569",UP+"xr6zy2u4xleh3bjq.pdf",UP+"ys601yyp7tp2l74i.pdf"]
+];
+const info=[
+ {icon:"chip",en:"Open Data",th:"คลังข้อมูลจังหวัด",tl:"ระบบบัญชีข้อมูลจังหวัดระยอง ดูแลโดยสำนักงานสถิติจังหวัดระยอง รวบรวมชุดข้อมูลจากหน่วยงานในจังหวัด",m:["259 ชุดข้อมูล","จาก 87 หน่วยงาน"],s:[
+   ["เศรษฐกิจ: ผลิตภัณฑ์มวลรวมจังหวัด (สนง.คลังจังหวัด)","https://rayong.gdcatalog.go.th/dataset/dataset_13_01"],
+   ["ประชากร: จำนวนประชากร (ที่ทำการปกครองจังหวัด)","https://rayong.gdcatalog.go.th/dataset/rayong02"],
+   ["สังคม: ดัชนีการสูงวัยจากการทะเบียน","https://rayong.gdcatalog.go.th/dataset/elder_2567_02"],
+   ["การศึกษา: สถานศึกษาทุกแห่งในจังหวัดระยอง","https://rayong.gdcatalog.go.th/dataset/dataset_14_05"],
+   ["ท่องเที่ยว: สถิตินักท่องเที่ยว (สนง.ท่องเที่ยวและกีฬา)","https://rayong.gdcatalog.go.th/dataset/mots_rayong"],
+   ["สิ่งแวดล้อม: จำนวนวันที่ PM2.5 เกินมาตรฐาน","https://rayong.gdcatalog.go.th/dataset/datapm25_08"],
+   ["ทรัพยากรธรรมชาติ: พื้นที่ป่าไม้","https://rayong.gdcatalog.go.th/dataset/dataset-02-19"],
+   ["ดูชุดข้อมูลทั้งหมด","https://rayong.gdcatalog.go.th/dataset/"]],nf:""},
+ {icon:"map",en:"Downloads",th:"ดาวน์โหลดเอกสาร",tl:"เอกสารเผยแพร่ของสำนักงานจังหวัดระยอง แยกตามกลุ่มงาน ล่าสุด: ประกาศ ก.พ. แต่งตั้งคณะกรรมการจริยธรรมประจำจังหวัดระยอง (22 ต.ค. 2569)",m:["5 กลุ่มงาน","และหน่วยตรวจสอบภายใน"],s:[
+   ["ยุทธศาสตร์การพัฒนาจังหวัด (PDF)",RG+"assets/uploads/department/document/20260205_83438.pdf"],
+   ["โครงสร้างจังหวัด (PDF)",RG+"assets/uploads/department/document/20260216_25381.pdf"],
+   ["บรรยายสรุปจังหวัด (PDF)",RG+"assets/uploads/department/document/20250829_62650.pdf"],
+   ["รายงานประจำปีจังหวัดระยอง",RG+"department/detail/125"],
+   ["หนังสือเวียน สนจ.รย. (คำสั่งและประกาศจังหวัด)",RG+"department/detail/52"],
+   ["กลุ่มงานยุทธศาสตร์และข้อมูลเพื่อการพัฒนาจังหวัด",RG+"department/detail/54"],
+   ["กลุ่มงานอำนวยการ",RG+"department/detail/55"],
+   ["กลุ่มงานบริหารทรัพยากรบุคคล",RG+"department/detail/56"]],nf:"แผนปฏิบัติราชการประจำปีและแบบฟอร์มราชการ: ยังไม่พบหน้าเผยแพร่แยกบนเว็บไซต์จังหวัด"},
+ {icon:"gov",en:"e-Office",th:"ระบบสำนักงานอิเล็กทรอนิกส์",tl:"ระบบงานเอกสารอิเล็กทรอนิกส์ จังหวัดระยอง ได้แก่ ระบบสารบรรณอิเล็กทรอนิกส์ ระบบจัดเก็บเอกสาร ระบบจองห้องประชุม และระบบจองรถยนต์",m:["4 ระบบ","สำหรับเจ้าหน้าที่ (ต้องเข้าสู่ระบบ)"],s:[
+   ["ระบบงานเอกสารอิเล็กทรอนิกส์ (สารบรรณ)","https://www.rayongsaraban.com/rygmenu/"],
+   ["ระบบข่าวประชาสัมพันธ์",RG+"department/detail/50"],
+   ["ระบบข่าวประกวดราคา",RG+"department/detail/51"],
+   ["ระบบปฏิทินและนัดหมาย",RG+"department/detail/22"]],nf:"ระบบรับส่งหนังสือราชการและระบบติดตามหนังสือ: ไม่พบหน้าเผยแพร่สาธารณะแยก (อยู่ในระบบที่ต้องเข้าสู่ระบบ)"},
+ {icon:"people",en:"Damrongdham Center",th:"ศูนย์ดำรงธรรมจังหวัด",tl:"งานบริการ 7 มิติ: รับเรื่องร้องเรียน/ร้องทุกข์ บริการข้อมูล ให้คำปรึกษา บริการเบ็ดเสร็จ รับ-ส่งต่อ หน่วยเคลื่อนที่เร็ว และดำเนินการตามนโยบายสำคัญ ขั้นตอน: ยื่นเรื่องทางสายด่วน ออนไลน์ หรือที่ศูนย์ราชการ แล้วติดตามผลด้วยเลขเรื่อง",m:["1567","สายด่วนปรึกษา โทรฟรี 24 ชม."],s:[
+   ["ร้องเรียน/ร้องทุกข์ออนไลน์","https://damrongdham.moi.go.th/complaint/form"],
+   ["ติดตามเรื่องร้องเรียน (โทร. 02-221-1133 ในเวลาราชการ)","https://damrongdham.moi.go.th/follow-case"],
+   ["แจ้งเรื่องร้องเรียนผ่านจังหวัดระยอง",RG+"index.php/department/complain"],
+   ["ติดตามเรื่องร้องเรียนจังหวัดระยอง",RG+"index.php/Status_complain/login"],
+   ["ข่าวกิจกรรมศูนย์ดำรงธรรม","https://damrongdham.moi.go.th/news"],
+   ["เอกสารกลุ่มงานศูนย์ดำรงธรรมจังหวัดระยอง",RG+"department/detail/53"]],nf:"ประวัติและอำนาจหน้าที่ของศูนย์ดำรงธรรมจังหวัดระยอง: ยังไม่พบการเผยแพร่บนเว็บไซต์จังหวัด"},
+ {icon:"econ",en:"Information Systems",th:"ระบบสารสนเทศภาครัฐ",tl:"ระบบข้อมูลและบริการออนไลน์ที่เกี่ยวข้องกับจังหวัดระยอง จากหน่วยงานส่วนกลางและส่วนภูมิภาค",m:["152 ชุดข้อมูล","ของสำนักงานจังหวัดระยองบน data.go.th"],s:[
+   ["ระบบบัญชีข้อมูลจังหวัดระยอง","https://rayong.gdcatalog.go.th/"],
+   ["ศูนย์กลางข้อมูลเปิดภาครัฐ (data.go.th)","https://data.go.th/organization/rayong-province"],
+   ["สถิติจังหวัด (สำนักงานสถิติจังหวัดระยอง)","https://rayong.nso.go.th/"],
+   ["รายงานภาวะเศรษฐกิจการคลังจังหวัด","https://www.cgd.go.th/cs/ryg/ryg/%E0%B8%A0%E0%B8%B2%E0%B8%A7%E0%B8%B0%E0%B9%80%E0%B8%A8%E0%B8%A3%E0%B8%A9%E0%B8%90%E0%B8%81%E0%B8%B4%E0%B8%88.html"],
+   ["GIS: ระบบตรวจสอบการใช้ประโยชน์ที่ดินตามผังเมือง","https://plludds.dpt.go.th/landuse/"],
+   ["e-Service หน่วยงานในจังหวัดระยอง",RG+"department/detail/113"],
+   ["ศูนย์รวมข้อมูลเพื่อติดต่อราชการ","https://www.info.go.th/"]],nf:""},
+ {icon:"bell",en:"Procurement",th:"การจัดซื้อจัดจ้าง",tl:"ประกาศประกวดราคา ราคากลาง ข้อกำหนด (TOR) และประกาศผลผู้ชนะ ของหน่วยงานในจังหวัดระยอง",m:["4 รายการ","ประกวดราคาที่ประกาศ 20–29 ต.ค. 2569"],s:[
+   ["ระบบข่าวประกวดราคา จังหวัดระยอง",RG+"department/detail/51"],
+   ["สรุปผลการจัดซื้อจัดจ้าง / ประกาศผู้ชนะ","http://123.242.173.4/rayong_eoffice/application/auction_news_v2/public2.php"],
+   ["แผนการจัดซื้อจัดจ้าง/จัดหาพัสดุ",RG+"department/detail/115"],
+   ["ประกาศจัดซื้อจัดจ้าง สปข.ระยอง","https://rayong.prd.go.th/th/content/category/index/id/11"],
+   ["ระบบ e-GP กรมบัญชีกลาง","https://www.gprocurement.go.th/new_index.html"]],nf:""}
 ];
 const ST={done:["เปิดใช้งานแล้ว","b-good","done"],run:["กำลังดำเนินการ","b-ocean",""],pilot:["ทดลองใช้งาน","b-warn","pilot"],hear:["รับฟังความเห็น","b-ok",""]};
 const projects=[
@@ -1005,11 +1117,21 @@ rail.addEventListener('scroll',railState,{passive:true});addEventListener('resiz
 
 /* ---------- News ---------- */
 const waveSvg=`<svg class="wave" viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0 40 C60 20 120 60 200 40 S340 20 400 40 V100 H0Z" fill="#fff"/><path d="M0 65 C80 45 150 85 230 62 S350 50 400 64 V100 H0Z" fill="#fff" opacity=".6"/></svg>`;
-$('#newsMain').innerHTML=news.map((n,i)=>`<a class="card post${i===0?' feature':''}" href="#news">
-  <div class="thumb">${n.img?`<img src="${n.img}" alt="" loading="lazy"${n.pos?` style="object-position:${n.pos}"`:''}>`:`<div class="art${n.art==='sun'?' sun':''}">${waveSvg}${ic(n.art)}</div>`}</div>
-  <div class="body"><div class="meta"><span class="cat ${n.c}">${n.cat}</span><span>${ic('cal','ico')} ${n.d}</span></div><h3>${n.t}</h3><p>${n.e}</p><span class="read">อ่านต่อ${ic('arrow')}</span></div></a>`).join('');
+$('#newsMain').innerHTML=news.map((n,i)=>`<a class="card post${i===0?' feature':''}" href="${n.url}" target="_blank" rel="noopener">
+  <div class="thumb"><div class="art${i===0?' sun':''}">${waveSvg}${ic(n.art)}</div></div>
+  <div class="body"><div class="meta"><span class="cat ${n.c}">${n.cat}</span><span>${ic('cal','ico')} ${n.d}</span></div><h3>${n.t}</h3>${n.e?`<p>${n.e}</p>`:''}<span class="src">ที่มา: ${n.src}</span><span class="read">อ่านข่าวต้นฉบับ${ic('up')}</span></div></a>`).join('');
 $$('.post .meta .ico').forEach(s=>{s.style.width='14px';s.style.height='14px';s.style.verticalAlign='-2px'});
-$('#ann').innerHTML=ann.map(a=>`<li><a href="#news"><span class="dt"><b class="num">${a[0]}</b><span>${a[1]}</span></span><span><h4>${a[2]}</h4><small>${a[3]}</small></span></a></li>`).join('');
+$('#ann').innerHTML=tenders.map(a=>`<li><div class="tn"><span class="dt"><b class="num">${a[0]}</b><span>${a[1]}</span></span><span><h4>${a[2]}</h4><small>${a[3]}</small><span class="tl"><a href="${a[4]}" target="_blank" rel="noopener">ไฟล์ประกาศ (PDF)</a><a href="${a[5]}" target="_blank" rel="noopener">TOR (PDF)</a></span></span></div></li>`).join('');
+
+/* ---------- Government information ---------- */
+$('#infoGrid').innerHTML=info.map(s=>`<article class="svc">
+  <div class="head"><span class="ic">${ic(s.icon)}</span></div>
+  <div><div class="en">${s.en}</div><h3>${s.th}</h3></div>
+  <p class="tl">${s.tl}</p>
+  <div class="metric"><b class="num">${s.m[0]}</b><span>${s.m[1]}</span></div>
+  <ul>${s.s.map(x=>`<li><a href="${x[1]}" target="_blank" rel="noopener">${x[0]}${ic('up','ico ext-i')}</a></li>`).join('')}</ul>
+  ${s.nf?`<p class="nf">${s.nf}</p>`:''}
+</article>`).join('');
 
 /* ---------- Projects ---------- */
 let filter='all';
@@ -1027,35 +1149,33 @@ renderProj();
 
 
 /* ---------- Governor activities ---------- */
-const acts=[["2 มิ.ย. 2569","Smart City","เปิดศูนย์บัญชาการเมืองอัจฉริยะ (City Command Center) ระยะที่ 2","ศูนย์ราชการจังหวัดระยอง",""],
-["28 พ.ค. 2569","สิ่งแวดล้อม","ลงพื้นที่ติดตามโครงการฟื้นฟูชายหาดแม่รำพึงและระบบเฝ้าระวังคุณภาพน้ำทะเล","หาดแม่รำพึง อ.เมืองระยอง","g"],
-["21 พ.ค. 2569","เศรษฐกิจ","ประชุมร่วมนักลงทุน EEC ส่งเสริมอุตสาหกรรมยานยนต์ไฟฟ้าและพลังงานสะอาด","นิคมอุตสาหกรรมมาบตาพุด","t"],
-["15 พ.ค. 2569","การศึกษา","มอบทุนการศึกษาเยาวชนต้นแบบดิจิทัล ประจำปี 2569 จำนวน 120 ทุน","โรงเรียนระยองวิทยาคม","s"]];
-$('#acts').innerHTML=acts.map(a=>`<article class="card act"><div class="top"><span class="cat ${a[4]}">${a[1]}</span><span class="num">${a[0]}</span></div><h4>${a[2]}</h4><small>${ic('pin')}${a[3]}</small></article>`).join('');
+const acts=[["1 พ.ย. 2569","ผู้ว่าราชการจังหวัด","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานโครงการ “แสงนำใจไทยทั้งชาติ เดิน วิ่ง ปั่น ป้องกันอัมพาต ครั้งที่ 12 เฉลิมพระเกียรติ”","สนามกีฬากลางจังหวัดระยอง","",RG+"activity/detail/3904"],
+["1 พ.ย. 2569","รองผู้ว่าราชการจังหวัด","นายกำธร เวหน รองผู้ว่าราชการจังหวัดระยอง เป็นประธานในงานปริวาสกรรม ประจำปี 2569","วัดช้างชนศิริราษฎร์บำรุง ต.ตะพง อ.เมืองระยอง","g",RG+"activity/detail/3903"],
+["26 ต.ค. 2569","ประชุม","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานการประชุมกรมการจังหวัด หัวหน้าส่วนราชการ นายอำเภอ และหัวหน้าหน่วยงานประจำจังหวัดระยอง ครั้งที่ 10/2569","ห้องภักดีศรีสงคราม ชั้น 4 ศาลากลางจังหวัดระยอง","t",RG+"activity/detail/3899"],
+["23 ต.ค. 2569","พิธีการ","นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง เป็นประธานในพิธีวางพวงมาลาถวายราชสักการะ เนื่องในวันปิยมหาราช","ลานหน้าศาลากลางจังหวัดระยอง","s",RG+"activity/detail/3897"]];
+$('#acts').innerHTML=acts.map(a=>`<article class="card act"><div class="top"><span class="cat ${a[4]}">${a[1]}</span><span class="num">${a[0]}</span></div><h4>${a[2]}</h4><small>${ic('pin')}${a[3]}</small><a class="more ext" href="${a[5]}" target="_blank" rel="noopener">ข่าวต้นฉบับ${ic('up')}</a></article>`).join('');
 
-/* ---------- Calendar (June 2569; 1 June is a Monday) ---------- */
-const CC={"เทศกาล":["c-fest","s"],"กิจกรรม":["c-act",""],"ประชุม":["c-meet","t"],"อบรม":["c-train","g"]};
-const events=[[5,"เทศกาลผลไม้และของดีจังหวัดระยอง ประจำปี 2569","09:00–20:00 น.","ตลาดกลางผลไม้ตะพง อ.เมืองระยอง","เทศกาล"],
-[5,"เปิดบูธสินค้า OTOP ระยอง พรีเมียม","10:00–18:00 น.","ลานกิจกรรม Passione Shopping Destination","กิจกรรม"],
-[9,"ประชุมรับฟังความคิดเห็นแผนพัฒนาเมืองอัจฉริยะ ครั้งที่ 3","13:30–16:30 น.","ศาลากลางจังหวัดระยอง ห้องภักดีศรีสงคราม","ประชุม"],
-[12,"อบรมเกษตรกรดิจิทัล: ใช้ข้อมูลดาวเทียมวางแผนสวนผลไม้","09:00–16:00 น.","สำนักงานเกษตรจังหวัดระยอง","อบรม"],
-[14,"วิ่งมินิมาราธอน Rayong Smart Run 2026","05:30–09:00 น.","หาดแหลมเจริญ อ.เมืองระยอง","กิจกรรม"],
-[18,"ประชุมคณะกรรมการร่วมภาครัฐ-เอกชน (กรอ.) จังหวัดระยอง","09:30–12:00 น.","ศูนย์ราชการจังหวัดระยอง","ประชุม"],
-[21,"เทศกาลดนตรีริมทะเล Rayong Beach Fest","16:00–22:00 น.","หาดแม่รำพึง","เทศกาล"],
-[25,"อบรมผู้ประกอบการ: ยกระดับร้านค้าสู่ e-Commerce","09:00–15:30 น.","หอการค้าจังหวัดระยอง","อบรม"],
-[28,"กิจกรรมปลูกป่าชายเลนเฉลิมพระเกียรติ ปากน้ำประแส","08:00–12:00 น.","ทุ่งโปรงทอง อ.แกลง","กิจกรรม"]];
-let selDay=5;
-const calGrid=$('#calGrid');
+/* ---------- Executive agenda calendar (October 2569; 1 Oct is a Thursday) ---------- */
+const CC={"พิธีการ":["c-fest","s"],"กิจกรรม":["c-act",""],"ประชุม":["c-meet","t"],"ภารกิจ":["c-train","g"]};
+const GOV="นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง", DEP="นางสาวสลารีวรรณ ทัพทวี รองผู้ว่าราชการจังหวัดระยอง";
+const events=[[23,"พิธีวางพวงมาลาถวายราชสักการะ เนื่องในวันคล้ายวันสวรรคต พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว (วันปิยมหาราช)","07:00 น.","ลานหน้าศาลากลางจังหวัดระยอง","พิธีการ",GOV,3897],
+[24,"พิธีบำเพ็ญกุศลอุทิศถวาย เนื่องในวันคล้ายวันสวรรคตครบ 1 ปี สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พระบรมราชชนนีพันปีหลวง","08:00 น.","หอประชุมศูนย์ราชการจังหวัดระยอง","พิธีการ",GOV,3898],
+[26,"ประชุมมอบนโยบายและขับเคลื่อนภารกิจสำคัญของกระทรวงมหาดไทย ผ่านระบบวีดิทัศน์ทางไกล (VCS)","09:00 น.","ห้องศรีสมุทโภคไชย ชั้น 4 ศาลากลางจังหวัดระยอง","ประชุม",GOV,3900],
+[26,"ประชุมกรมการจังหวัด หัวหน้าส่วนราชการ นายอำเภอ และหัวหน้าหน่วยงานประจำจังหวัดระยอง ครั้งที่ 10/2569","09:30 น.","ห้องภักดีศรีสงคราม ชั้น 4 ศาลากลางจังหวัดระยอง","ประชุม",GOV,3899],
+[28,"ให้การต้อนรับ พลอากาศเอก สมคิด สุขบาง ในกิจกรรมศึกษาดูงานเพื่อสร้างแรงบันดาลใจให้กับเยาวชน","09:30 น.","โรงแยกก๊าซธรรมชาติระยอง บริษัท ปตท. จำกัด (มหาชน)","ภารกิจ",DEP+" (ได้รับมอบหมาย)",3901],
+[30,"เปิดนิทรรศการให้ความรู้โรคหลอดเลือดสมอง ตามโครงการแสงนำใจไทยทั้งชาติเดินวิ่งปั่น ครั้งที่ 12 เฉลิมพระเกียรติ","11:00 น.","ศูนย์การค้าแพชชั่น ช้อปปิ้งเดสติเนชั่น อ.เมืองระยอง","กิจกรรม",DEP+" (ได้รับมอบหมาย)",3902]];
+let selDay=26;
+const calGrid=$('#calGrid'), OFFSET=3, DAYS=31;
 function renderCal(){
-  let h=['จ','อ','พ','พฤ','ศ','ส','อา'].map(d=>`<span class="dow">${d}</span>`).join('');
-  for(let d=1;d<=30;d++){const ev=events.filter(e=>e[0]===d);
-    h+=`<button type="button" class="day${ev.length?' has':''}" data-d="${d}" aria-pressed="${d===selDay}" aria-label="${d} มิถุนายน 2569${ev.length?` มี ${ev.length} กิจกรรม`:''}"><span class="num">${d}</span><span class="dots">${ev.map(e=>`<i class="${CC[e[4]][0]}"></i>`).join('')}</span></button>`}
+  let h=['จ','อ','พ','พฤ','ศ','ส','อา'].map(d=>`<span class="dow">${d}</span>`).join('')+'<span></span>'.repeat(OFFSET);
+  for(let d=1;d<=DAYS;d++){const ev=events.filter(e=>e[0]===d);
+    h+=`<button type="button" class="day${ev.length?' has':''}" data-d="${d}" aria-pressed="${d===selDay}" aria-label="${d} ตุลาคม 2569${ev.length?` มี ${ev.length} รายการ`:''}"><span class="num">${d}</span><span class="dots">${ev.map(e=>`<i class="${CC[e[4]][0]}"></i>`).join('')}</span></button>`}
   calGrid.innerHTML=h;
   $$('.day',calGrid).forEach(b=>b.onclick=()=>{selDay=+b.dataset.d;renderCal()});
   const ev=events.filter(e=>e[0]===selDay);
-  $('#calDay').innerHTML=`<h3>${ic('cal')}กิจกรรมวันที่ ${selDay} มิ.ย. 2569</h3>`+(ev.length?ev.map(e=>`<div class="ev"><i class="${CC[e[4]][0]}"></i><div><span class="cat ${CC[e[4]][1]}">${e[4]}</span><h4>${e[1]}</h4><div class="info"><span>${ic('cal')}${e[2]}</span><span>${ic('pin')}${e[3]}</span></div></div></div>`).join(''):`<p class="cal-empty">ไม่มีกิจกรรมในวันนี้ เลือกวันที่มีจุดสีในปฏิทินเพื่อดูกิจกรรม</p>`);
+  $('#calDay').innerHTML=`<h3>${ic('cal')}วาระวันที่ ${selDay} ต.ค. 2569</h3>`+(ev.length?ev.map(e=>`<div class="ev"><i class="${CC[e[4]][0]}"></i><div><span class="cat ${CC[e[4]][1]}">${e[4]}</span><h4>${e[1]}</h4><div class="who">${e[5]}</div><div class="info"><span>${ic('cal')}${e[2]}</span><span>${ic('pin')}${e[3]}</span></div><a class="more ext" href="${RG}activity/detail/${e[6]}" target="_blank" rel="noopener">ข่าวต้นฉบับ${ic('up')}</a></div></div>`).join(''):`<p class="cal-empty">ไม่พบวาระที่เผยแพร่ในวันนี้ เลือกวันที่มีจุดสีในปฏิทินเพื่อดูรายละเอียด</p>`);
 }
-$('#calCount').textContent=events.length+' กิจกรรม';
+$('#calCount').textContent=events.length+' รายการ';
 $('#calList').innerHTML=events.map(e=>`<li><button type="button" data-d="${e[0]}"><span class="dn num">${e[0]}</span><span class="tt">${e[1]}</span><span class="tm">${e[2]}</span></button></li>`).join('');
 $$('#calList button').forEach(b=>b.onclick=()=>{selDay=+b.dataset.d;renderCal();$('#calDay').scrollIntoView({behavior:'smooth',block:'nearest'})});
 renderCal();
@@ -1065,7 +1185,7 @@ const hdr=$('.hdr');
 addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8),{passive:true});
 const navLinks=$$('.nav a');
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
-['dashboard','services','explore','news','projects','contact'].forEach(id=>io.observe(document.getElementById(id)));
+['dashboard','services','explore','news','gov-info','projects','contact'].forEach(id=>io.observe(document.getElementById(id)));
 
 const drawer=$('#drawer'),mbtn=$('.menu-btn');
 const openDrawer=o=>{drawer.hidden=!o;mbtn.setAttribute('aria-expanded',o);if(o)drawer.querySelector('nav a').focus()};
@@ -1080,8 +1200,8 @@ const EN={brandSub:"Rayong Province",navDash:"City Data",navSvc:"Services",navEx
 heroPill:"Rayong Smart Province · Smart City",heroTitle:"Rayong Smart City",heroSub:"Towards a <em>sustainable</em> city of the future",heroLede:"A liveable smart province with a sustainably growing economy — powered by innovation, technology and citizen participation.",heroCta1:"Explore city data",heroCta2:"Online services",
 dashTitle:"Real-time City Data",dashDesc:"The smart city command center links data from over 5,000 sensors across the province for fast, accurate decision-making.",
 svcTitle:"Smart City Services",svcDesc:"One-stop public services for citizens and businesses — submit requests, pay taxes, book queues and track cases anytime.",allSvc:"Citizen service center",
-expTitle:"Explore Rayong",expDesc:"Beaches, islands, mangroves and the old town across all 8 districts.",newsTitle:"News & Activities",newsDesc:"Smart city updates, provincial announcements and key events in Rayong.",allNews:"All news",
-navGov:"Governor",navCal:"Event Calendar",govTitle:"Message from the Governor",calTitle:"Provincial Event Calendar",calDesc:"Follow festivals, meetings and key events in Rayong — pick a date to see the details.",projTitle:"Smart City Projects",projDesc:"Track progress on city development projects under the Rayong Provincial Development Plan 2025–2035."};
+expTitle:"Explore Rayong",expDesc:"Beaches, islands, mangroves and the old town across all 8 districts.",newsTitle:"News & Procurement",newsDesc:"Latest news and announcements from the Rayong Provincial Office and Public Relations Office, plus tenders from the provincial procurement board.",allNews:"All news",
+navGov:"Executives",navCal:"Executive Agenda",navInfo:"Gov Info",govTitle:"Rayong Provincial Executives",calTitle:"Executive Agenda",calDesc:"Missions and meetings of Rayong provincial executives in October 2026, from the Rayong Province website.",infoTitle:"Government Information & Services",infoDesc:"Open data, downloads, e-Office, the Damrongdham Center and information systems — every link goes to the official source.",projTitle:"Smart City Projects",projDesc:"Track progress on city development projects under the Rayong Provincial Development Plan 2025–2035."};
 const TH={};
 $$('[data-i18n]').forEach(e=>{TH[e.dataset.i18n]??=e.textContent});
 $$('[data-i18n-html]').forEach(e=>{TH[e.dataset.i18nHtml]??=e.innerHTML});
@@ -1110,11 +1230,13 @@ const idx=[
  ...places.map(p=>[p.name+' — '+p.d,'ท่องเที่ยว','#explore']),
  ...districts.map(d=>[d.name+' — '+d.tagline,'อำเภอ','#dashboard']),
  ...news.map(n=>[n.t,'ข่าว','#news']),
- ...ann.map(a=>[a[2],'ประกาศ','#news']),
+ ...tenders.map(a=>[a[2],'ประกวดราคา','#news']),
+ ...info.map(c=>[c.th+' · '+c.en,'ข้อมูลภาครัฐ','#gov-info']),
+ ...info.flatMap(c=>c.s.map(x=>[x[0],c.th,'#gov-info'])),
  ...projects.map(p=>[p.t,'โครงการ','#projects']),
  ...events.map(e=>[e[1]+' — '+e[0]+' มิ.ย.','ปฏิทิน','#calendar']),
  ...acts.map(a=>[a[2],'ผู้บริหาร','#governor']),
- ['สารจากผู้ว่าราชการจังหวัด — นายไตรภพ วงศ์ไตรรัตน์','ผู้บริหาร','#governor']
+ ['ผู้บริหารจังหวัดระยอง — นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัด','ผู้บริหาร','#governor']
 ];
 const sd=$('#sdlg'),sq=$('#sq'),sres=$('#sres');
 function runSearch(){
